@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["'Daniel Karagiannis'"]
   spec.email         = ["'dakaragiannis@gmail.com'"]
 
-  spec.summary       = %q{Write a short summary, because RubyGems requires one.}
-  spec.description   = %q{Write a longer description or delete this line.}
+  spec.summary       = %q{Stock Screener for gold miners.}
+  spec.description   = %q{App scrapes investor info for gold mining stocks.}
   spec.homepage      = "https://github.com/dakaras/gold_miners-cli-app"
   spec.license       = "MIT"
 
