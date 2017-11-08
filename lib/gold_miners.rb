@@ -1,5 +1,3 @@
-require "gold_miners/version"
-
-module GoldMiners
-  # Your code goes here...
-end
+# this is the environment file 
+require_relative "./gold_miners/version"
+require_relative './gold_miners/cli'
