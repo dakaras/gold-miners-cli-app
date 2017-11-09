@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 require "bundler/setup"
-require "gold_miners"
+require "./lib/gold_miners"
 
 GoldMiners::CLI.new.call
 
