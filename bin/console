@@ -13,4 +13,4 @@ require "gold_miners"
 require "irb"
 IRB.start
 
-# this quickly starts an irb session 
+# this quickly starts an irb session
