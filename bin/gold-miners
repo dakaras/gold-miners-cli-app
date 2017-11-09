@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
-
-require './lib/gold_miners'
+require "bundler/setup"
+require "gold_miners"
 
 GoldMiners::CLI.new.call
 
-#this is the ruby interpreter
-#shebang line tells this file what program interpreter to run with 
+# this is the ruby interpreter
+# shebang line tells this file what program interpreter to run with for the user
