@@ -10,8 +10,15 @@ class GoldMiners::CLI
   def list_quotes
     puts " "
     puts "QUOTES FROM TODAY'S SESSION ARE AVAILABLE FOR THE FOLLOWING GOLD MINING STOCKS:"
-    puts "1. Ticker: NEM - Name: Newmont Mining"
-    puts "2. Ticker: GG - Name: Goldcorp"
+    # puts "1. Ticker: NEM - Name: Newmont Mining"
+    # puts "2. Ticker: GG - Name: Goldcorp"
+    # calls on .make_quotes and then iterates over all of the quotes that gets created to print a list of quotes
+    @quotes = GoldMiners::Scraper.make_quotes
+    @quotes.each.with_index(1) do |quote, i|
+      if quote.ticker
+        puts "#{i}. Ticker: #{quote.ticker} Name: #{quote.name} Price: #{quote.price} Volume: #{quote.volume}"
+      end
+    end
     puts " "
   end
 
@@ -22,14 +29,12 @@ class GoldMiners::CLI
       puts "Enter list to display all stocks."
       puts "Enter exit when finished."
       input = gets.strip.downcase
+
       case input
-      when "1"
+      when input.to_i-1 > 0
+        quote = @quotes[input.to_i-1]
         puts " "
-        puts "1. Ticker: NEM - Name: Newmont Mining - Price: 36.29 - Change: 1.68% - Volume: 2,404,011"
-        puts " "
-      when "2"
-        puts " "
-        puts "2. Ticker: GG - Name: Goldcorp - Price: 13.10 - Change: -0.53% - Volume: 1,955,126"
+        puts "#{input.to_i-1}. Ticker: #{quote.ticker} Name: #{quote.name} Price: #{quote.price} Volume: #{quote.volume}"
         puts " "
       when "list"
         puts " "

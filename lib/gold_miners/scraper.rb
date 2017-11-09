@@ -7,28 +7,18 @@ class GoldMiners::Scraper
   end
 
   def get_quotes
-    # responsible for using a CSS selector to grab all of the HTML elements that contain a quote
+    # instance method will be responsible for using a CSS selector to grab all of the HTML elements that contain a quote
     self.get_page.css(".quote-custom-strip")
   end
 
   def make_quotes
-    # responsible for actually instantiating Quote objects and giving each quote object the correct attribute that we scraped
+    # instance method will be responsible for actually instantiating Quote objects and giving each quote object the correct attribute that we scraped
     self.get_quotes.each do |doc|
       quote = Scraper.new
       quote.ticker = doc.css("span.symbol").text
       quote.name = doc.css("h1").text
       quote.price = doc.css("span.last").text.split("")[0..4].join
       quote.volume = doc.css("span.volume").text
-      binding.pry
-    end
-  end
-
-  def print_quotes
-    # calls on .make_quotes and then iterates over all of the quotes that gets created to print a list of quotes
-    self.make_quotes.each.with_index(1) do |quote, i|
-      if quote.ticker
-        puts "#{i}. Ticker: #{quote.ticker} Name: #{quote.name} Price: #{quote.price} Volume: #{quote.volume}"
-      end 
     end
   end
 
@@ -37,4 +27,3 @@ end
 # quote.name = doc.css(".quote-custom-strip").first.css("h1").text
 # quote.price = doc.css(".quote-custom-strip").first.css("span.last").text.split("")[0..4].join
 # quote.volume = doc.css(".quote-custom-strip").first.css("span.volume").text
-GoldMiners::Scraper.new.make_quotes
