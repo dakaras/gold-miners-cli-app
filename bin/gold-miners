@@ -5,3 +5,4 @@ require './lib/gold_miners'
 GoldMiners::CLI.new.call
 
 #this is the ruby interpreter
+#shebang line tells this file what program interpreter to run with 
