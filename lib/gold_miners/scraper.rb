@@ -14,7 +14,7 @@ class GoldMiners::Scraper
   def make_quotes
     # instance method will be responsible for actually instantiating Quote objects and giving each quote object the correct attribute that we scraped
     self.get_quotes.each do |doc|
-      quote = Scraper.new
+      quote = self.new
       quote.ticker = doc.css("span.symbol").text
       quote.name = doc.css("h1").text
       quote.price = doc.css("span.last").text.split("")[0..4].join
