@@ -13,34 +13,33 @@ class GoldMiners::CLI
     # puts "1. Ticker: NEM - Name: Newmont Mining"
     # puts "2. Ticker: GG - Name: Goldcorp"
     # calls on .make_quotes and then iterates over all of the quotes that gets created to print a list of quotes
-    @quotes = GoldMiners::Scraper.make_quotes
+    @quotes = GoldMiners::Scraper.new.make_quotes
     @quotes.each.with_index(1) do |quote, i|
       if quote.ticker
-        puts "#{i}. Ticker: #{quote.ticker} Name: #{quote.name} Price: #{quote.price} Volume: #{quote.volume}"
+        puts "#{i}. Ticker: #{quote.ticker} Name: #{quote.name}"
       end
     end
     puts " "
   end
 
   def menu
-    input = nil
+    input = "0"
     while input != "exit"
       puts "Enter a number for the stock you would like additional info on."
       puts "Enter list to display all stocks."
       puts "Enter exit when finished."
       input = gets.strip.downcase
 
-      case input
-      when input.to_i-1 > 0
-        quote = @quotes[input.to_i-1]
+      if input > "0"
+        quote = @quotes[input.to_i]
         puts " "
-        puts "#{input.to_i-1}. Ticker: #{quote.ticker} Name: #{quote.name} Price: #{quote.price} Volume: #{quote.volume}"
+        puts "Ticker: #{quote.ticker} Name: #{quote.name} Price: #{quote.price} Volume: #{quote.volume}"
         puts " "
-      when "list"
+      elsif "list"
         puts " "
         list_quotes
         puts " "
-      when "exit"
+      elsif "exit"
         break
       else
         puts " "
