@@ -29,7 +29,7 @@ class GoldMiners::CLI
       input = gets.strip.downcase
 
       if input > "0"
-        quote = @quotes[input.to_i]
+        quote = @quotes[input.to_i-1]
         puts " "
         puts "Ticker: #{quote.ticker} Name: #{quote.name} Price: #{quote.price} Volume: #{quote.volume}"
         puts " "
@@ -43,6 +43,7 @@ class GoldMiners::CLI
         puts " "
         puts "Invalid entry. Please re-enter desired selection. Enter list to display all stocks or exit to finish."
         puts " "
+        input = gets.strip.downcase
       end
     end
   end

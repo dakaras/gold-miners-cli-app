@@ -18,7 +18,7 @@ class GoldMiners::Scraper
       quote.ticker = doc.css("span.symbol").text
       quote.name = doc.css("h1").text
       quote.price = doc.css("span.last").text.split("")[0..4].join
-      quote.volume = doc.css("span.volume").text
+      quote.volume = doc.css("span.volume").text.split("")[0..6].join
       quote
     end
   end
