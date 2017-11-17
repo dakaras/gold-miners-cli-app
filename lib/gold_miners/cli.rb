@@ -28,7 +28,7 @@ class GoldMiners::CLI
       puts "Enter exit when finished."
       input = gets.strip.downcase
 
-      if input > "0"
+      if input.to_i > 0
         quote = @quotes[input.to_i-1]
         puts " "
         puts "Ticker: #{quote.ticker} Name: #{quote.name} Price: #{quote.price} Volume: #{quote.volume}"
