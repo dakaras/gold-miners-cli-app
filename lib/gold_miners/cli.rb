@@ -21,14 +21,14 @@ class GoldMiners::CLI
   end
 
   def menu
-    input = "0"
+    input = nil 
     while input != "exit"
       puts "Enter a number for the stock you would like additional info on."
       puts "Enter list to display all stocks."
       puts "Enter exit when finished."
       input = gets.strip.downcase
 
-      if input.to_i > 0 && input.to_i < 17 
+      if input.to_i > 0 && input.to_i < 17
         quote = @quotes[input.to_i-1]
         puts " "
         puts "Ticker: #{quote.ticker} Name: #{quote.name} Price: #{quote.price} Volume: #{quote.volume}"
