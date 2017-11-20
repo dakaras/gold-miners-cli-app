@@ -21,7 +21,7 @@ class GoldMiners::CLI
   end
 
   def menu
-    input = nil 
+    input = nil
     while input != "exit"
       puts "Enter a number for the stock you would like additional info on."
       puts "Enter list to display all stocks."
