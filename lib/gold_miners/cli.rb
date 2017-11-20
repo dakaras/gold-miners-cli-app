@@ -16,7 +16,7 @@ class GoldMiners::CLI
     @quotes = GoldMiners::Scraper.new.make_quotes #creates an instance of Scraper class to store in instance variable
     @quotes.each.with_index(1) do |quote, i|
       puts "#{i}. Ticker: #{quote.ticker} Name: #{quote.name}"
-    end
+     end
     puts " "
   end
 

@@ -1,4 +1,4 @@
-class GoldMiners::Scraper #scope accessor creates namespace 
+class GoldMiners::Scraper #scope accessor creates namespace
   attr_accessor :ticker, :name, :price, :volume
 
   def get_page
