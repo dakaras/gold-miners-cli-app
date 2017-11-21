@@ -1,5 +1,5 @@
 class GoldMiners::Scraper #scope accessor creates namespace
-  attr_accessor :ticker, :name, :price, :volume, :low, :high 
+  attr_accessor :ticker, :name, :price, :volume, :low, :high
 
   def get_page
     # instance method will be responsible for using Nokogiri and open-uri to grab the entire HTML document from cnbc.com
@@ -12,7 +12,8 @@ class GoldMiners::Scraper #scope accessor creates namespace
   end
 
   def make_quotes
-    # instance method will be responsible for instantiating Quote objects and giving each quote object the correct attribute that we scraped returned as an array
+    # instance method will be responsible for iterating over XML array in .get_quotes
+    # to instantiate Quote objects with corresponding properties, returned as an array of 16 instances.
     get_quotes.map do |doc|
       quote = GoldMiners::Scraper.new
       quote.ticker = doc.css("span.symbol").text
