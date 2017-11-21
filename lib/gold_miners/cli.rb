@@ -44,7 +44,6 @@ class GoldMiners::CLI
         puts " "
         puts "Invalid entry. Please re-enter desired selection. Enter list to display all stocks or exit to finish."
         puts " "
-        input = gets.strip.downcase
       end
     end
   end
