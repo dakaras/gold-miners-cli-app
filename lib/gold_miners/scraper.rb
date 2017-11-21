@@ -12,7 +12,7 @@ class GoldMiners::Scraper #scope accessor creates namespace
   end
 
   def make_quotes
-    # instance method will be responsible for actually instantiating Quote objects and giving each quote object the correct attribute that we scraped
+    # instance method will be responsible for instantiating Quote objects and giving each quote object the correct attribute that we scraped returned as an array
     get_quotes.map do |doc|
       quote = GoldMiners::Scraper.new
       quote.ticker = doc.css("span.symbol").text
