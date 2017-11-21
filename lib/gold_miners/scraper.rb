@@ -7,7 +7,7 @@ class GoldMiners::Scraper #scope accessor creates namespace
   end
 
   def get_quotes
-    # instance method will be responsible for using a CSS selector to grab all of the HTML elements that contain a quote
+    # instance method will be responsible for using a CSS selector to return XML elements as an array that contain all the attributes needed for a quote
       self.get_page.css(".quote-custom-strip")
   end
 
