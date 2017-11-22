@@ -4,5 +4,5 @@ require "gold_miners"
 
 GoldMiners::CLI.new.call
 
-# this is the ruby interpreter
+# this is the executable Ruby file that allows the program to be called from the terminal
 # shebang line tells this file what program interpreter to run with for the user
