@@ -1,5 +1,4 @@
 class GoldMiners::Scraper #scope accessor creates namespace
-  attr_accessor :ticker, :name, :price, :volume, :low, :high
 
   def get_page
     # instance method will be responsible for using Nokogiri and open-uri to grab the entire HTML document from cnbc.com
@@ -14,15 +13,14 @@ class GoldMiners::Scraper #scope accessor creates namespace
   def make_quotes
     # instance method will be responsible for iterating over XML array in .get_quotes
     # to instantiate Quote objects with corresponding properties, returned as an array of 16 instances.
-    get_quotes.map do |doc|
-      quote = GoldMiners::Scraper.new
-      quote.ticker = doc.css("span.symbol").text
-      quote.name = doc.css("h1").text
-      quote.price = doc.css("span.last").text.split("")[0..4].join.gsub("%", "")
-      quote.volume = doc.css("span.volume").text.split("")[0..6].join
-      quote.low = doc.css(".low").text
-      quote.high = doc.css(".high").text
-      quote
+    self.get_quotes.each do |doc|
+      ticker = doc.css("span.symbol").text
+      name = doc.css("h1").text
+      price = doc.css("span.last").text.split("")[0..4].join.gsub("%", "")
+      volume = doc.css("span.volume").text.split("")[0..6].join
+      low = doc.css(".low").text
+      high = doc.css(".high").text
+      GoldMiners::Quote.new(ticker, name, price, volume, low, high)
     end
   end
 

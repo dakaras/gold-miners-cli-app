@@ -9,4 +9,5 @@ require 'pry'
 
 require_relative 'gold_miners/version'
 require_relative 'gold_miners/scraper'
+require_relative 'gold_miners/quote'
 require_relative 'gold_miners/cli'

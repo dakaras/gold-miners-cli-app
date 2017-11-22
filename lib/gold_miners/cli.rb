@@ -2,6 +2,7 @@
 class GoldMiners::CLI
 
   def call
+    GoldMiners::Scraper.new.make_quotes #creates an instance of Scraper class to store array of quotes in instance variable @quotes
     list_quotes
     menu
     finish
@@ -12,8 +13,7 @@ class GoldMiners::CLI
     puts "QUOTES FROM TODAY'S SESSION ARE AVAILABLE FOR THE FOLLOWING GOLD MINING STOCKS:"
     # puts "1. Ticker: NEM - Name: Newmont Mining"
     # puts "2. Ticker: GG - Name: Goldcorp"
-    @quotes = GoldMiners::Scraper.new.make_quotes #creates an instance of Scraper class to store array of quotes in instance variable @quotes
-    @quotes.each.with_index(1) do |quote, i|  # calls on .make_quotes to iterate over all of the quotes created to print a list of quotes
+    GoldMiners::Quote.all.each.with_index(1) do |quote, i|  # calls on .make_quotes to iterate over all of the quotes created to print a list of quotes
       puts "#{i}. TICKER: #{quote.ticker} NAME: #{quote.name}"
      end
     puts " "
@@ -28,20 +28,16 @@ class GoldMiners::CLI
       input = gets.strip.downcase
 
       if input.to_i > 0 && input.to_i < 17
-        quote = @quotes[input.to_i-1]
+        quote = GoldMiners::Quote.all[input.to_i-1]
         puts " "
         puts "TICKER: #{quote.ticker} NAME: #{quote.name} PRICE: #{quote.price} VOLUME: #{quote.volume} 52 WK LOW: #{quote.low} 52 WK HIGH: #{quote.high}"
         puts " "
-      elsif "list"
-        puts " "
+      elsif input == "list"
         list_quotes
-        puts " "
-      elsif "exit"
+      elsif input == "exit"
         break
       else
-        puts " "
         puts "Invalid entry. Please re-enter desired selection. Enter list to display all stocks or exit to finish."
-        puts " "
       end
     end
   end
