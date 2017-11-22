@@ -16,7 +16,7 @@ class GoldMiners::CLI
     # calls on .make_quotes and then iterates over all of the quotes that gets created to print a list of quotes
     @quotes = GoldMiners::Scraper.new.make_quotes #creates an instance of Scraper class to store array of quotes in instance variable @quotes
     @quotes.each.with_index(1) do |quote, i|
-      puts "#{i}. Ticker: #{quote.ticker} Name: #{quote.name}"
+      puts "#{i}. TICKER: #{quote.ticker} NAME: #{quote.name}"
      end
     puts " "
   end
@@ -32,7 +32,7 @@ class GoldMiners::CLI
       if input.to_i > 0 && input.to_i < 17
         quote = @quotes[input.to_i-1]
         puts " "
-        puts "Ticker: #{quote.ticker} Name: #{quote.name} Price: #{quote.price} Volume: #{quote.volume} 52 WK LOW: #{quote.low} 52 WK HIGH: #{quote.high}"
+        puts "TICKER: #{quote.ticker} NAME: #{quote.name} PRICE: #{quote.price} VOLUME: #{quote.volume} 52 WK LOW: #{quote.low} 52 WK HIGH: #{quote.high}"
         puts " "
       elsif "list"
         puts " "
@@ -44,7 +44,6 @@ class GoldMiners::CLI
         puts " "
         puts "Invalid entry. Please re-enter desired selection. Enter list to display all stocks or exit to finish."
         puts " "
-        input = gets.strip.downcase
       end
     end
   end
