@@ -1,5 +1,5 @@
 class GoldMiners::Scraper #scope accessor creates namespace
-  attr_accessor :ticker, :name, :price, :volume
+  attr_accessor :ticker, :name, :price, :volume, :low, :high
 
   def get_page
     # instance method will be responsible for using Nokogiri and open-uri to grab the entire HTML document from cnbc.com
@@ -19,6 +19,8 @@ class GoldMiners::Scraper #scope accessor creates namespace
       quote.name = doc.css("h1").text
       quote.price = doc.css("span.last").text.split("")[0..4].join.gsub("%", "")
       quote.volume = doc.css("span.volume").text.split("")[0..6].join
+      quote.low = doc.css(".low").text
+      quote.high = doc.css(".high").text
       quote
     end
   end

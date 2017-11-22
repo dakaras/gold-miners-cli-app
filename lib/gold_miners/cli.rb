@@ -32,7 +32,7 @@ class GoldMiners::CLI
       if input.to_i > 0 && input.to_i < 17
         quote = @quotes[input.to_i-1]
         puts " "
-        puts "Ticker: #{quote.ticker} Name: #{quote.name} Price: #{quote.price} Volume: #{quote.volume}"
+        puts "Ticker: #{quote.ticker} Name: #{quote.name} Price: #{quote.price} Volume: #{quote.volume} 52 WK LOW: #{quote.low} 52 WK HIGH: #{quote.high}"
         puts " "
       elsif "list"
         puts " "
