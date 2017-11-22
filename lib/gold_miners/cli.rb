@@ -12,10 +12,8 @@ class GoldMiners::CLI
     puts "QUOTES FROM TODAY'S SESSION ARE AVAILABLE FOR THE FOLLOWING GOLD MINING STOCKS:"
     # puts "1. Ticker: NEM - Name: Newmont Mining"
     # puts "2. Ticker: GG - Name: Goldcorp"
-
-    # calls on .make_quotes and then iterates over all of the quotes that gets created to print a list of quotes
     @quotes = GoldMiners::Scraper.new.make_quotes #creates an instance of Scraper class to store array of quotes in instance variable @quotes
-    @quotes.each.with_index(1) do |quote, i|
+    @quotes.each.with_index(1) do |quote, i|  # calls on .make_quotes and then iterates over all of the quotes that gets created to print a list of quotes
       puts "#{i}. TICKER: #{quote.ticker} NAME: #{quote.name}"
      end
     puts " "
