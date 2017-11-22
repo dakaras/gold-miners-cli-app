@@ -12,7 +12,7 @@ class GoldMiners::Scraper #scope accessor creates namespace
 
   def make_quotes
     # instance method will be responsible for iterating over XML array in .get_quotes
-    # to instantiate Quote objects with corresponding properties, returned as an array of 16 instances.
+    # to instantiate Quote objects with corresponding properties
     self.get_quotes.each do |doc|
       ticker = doc.css("span.symbol").text
       name = doc.css("h1").text
@@ -21,11 +21,9 @@ class GoldMiners::Scraper #scope accessor creates namespace
       low = doc.css(".low").text
       high = doc.css(".high").text
       GoldMiners::Quote.new(ticker, name, price, volume, low, high)
+      # return value is self.get_quotes
+      # instances created in .each are saved in Quote.rb using self.all when initialized
     end
   end
 
 end
-# quote.ticker = doc.css(".quote-custom-strip").first.css("span.symbol").text
-# quote.name = doc.css(".quote-custom-strip").first.css("h1").text
-# quote.price = doc.css(".quote-custom-strip").first.css("span.last").text.split("")[0..4].join
-# quote.volume = doc.css(".quote-custom-strip").first.css("span.volume").text
